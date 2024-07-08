@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toronto-app
+  labels:
+    app: toronto-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: toronto-app
+  template:
+    metadata:
+      labels:
+        app: toronto-app
+    spec:
+      containers:
+      - name: toronto-app
+        image: hamzaruhail/clo835-project-2:latest
+        ports:
+        - containerPort: 3030
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
